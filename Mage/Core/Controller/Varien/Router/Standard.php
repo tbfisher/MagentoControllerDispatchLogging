@@ -148,6 +148,7 @@ class Mage_Core_Controller_Varien_Router_Standard extends Mage_Core_Controller_V
          */
         $modules = $this->getModuleByFrontName($module);
 
+        ob_start();print_r($modules);$log_output=ob_get_contents();ob_end_clean();
         Mage::Log('Found Modules: '.$log_output);
         
         /**
