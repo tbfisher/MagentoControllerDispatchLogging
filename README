@@ -1,0 +1,43 @@
+Magento Controller Dispatch
+--------------------------------------------------
+The following files will enable some simple logging that traces Magento's routing and controller dispatch.  A few caveats
+
+1. These files are not a true Magento module.  While powerful, creating something like this with Magento's override system would be an order of magnitude harder.
+
+2. Because of the above, I can't make any promises about using this with a anything but Magneto version 1.4.2.0	
+
+3. Standard Caveats about production servers apply.  Use at your own risk, no warranties, etc.
+
+Installing
+--------------------------------------------------
+Take the "Mage" folder and place it in 
+
+	app/code/local
+	
+so that your directory tree looks like 
+
+local/Mage/Core/Controller/Varien/Action.php
+local/Mage/Core/Controller/Varien/Front.php
+local/Mage/Core/Controller/Varien/Router/Standard.php
+local/Mage/Core/Model/App.php
+
+Then, enable logging (see http://alanstorm.com/magento_log_and_developer_mode for more information)
+
+You should now see messages in your system log that look something like 
+
+	2009-09-20T16:55:48+00:00 DEBUG (7): Matching router [standard] = Mage_Core_Controller_Varien_Router_Standard  vs. request
+	2009-09-20T16:55:48+00:00 DEBUG (7): Module: helloworld
+	2009-09-20T16:55:48+00:00 DEBUG (7): Found Modules: Array
+	(
+		[0] => Alanstormdotcom_Helloworld
+	)
+
+	2009-09-20T16:55:48+00:00 DEBUG (7): Setting Route Name [helloworld] on request
+	2009-09-20T16:55:48+00:00 DEBUG (7): Passing request into controller Alanstormdotcom_Helloworld_IndexController
+	2009-09-20T16:55:48+00:00 DEBUG (7): Setting Module Name to: helloworld at Mage_Core_Controller_Varien_Router_Standard::match(248)
+	2009-09-20T16:55:48+00:00 DEBUG (7): Setting Controller Name to: index at Mage_Core_Controller_Varien_Router_Standard::match(250)
+	2009-09-20T16:55:48+00:00 DEBUG (7): Setting Action Name to: index at Mage_Core_Controller_Varien_Router_Standard::match(252)
+	2009-09-20T16:55:48+00:00 DEBUG (7): Calling dispatch method on Alanstormdotcom_Helloworld_IndexController
+	2009-09-20T16:55:48+00:00 DEBUG (7): Action Controller: Alanstormdotcom_Helloworld_IndexController dispatching with action [index]
+	 
+You'll also see a message whenever Matchento can't make a module, controller, or action match, which is useful is debugging 404 problems.	 
