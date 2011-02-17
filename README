@@ -4,7 +4,7 @@ The following files will enable some simple logging that traces Magento's routin
 
 1. These files are not a true Magento module.  While powerful, creating something like this with Magento's override system would be an order of magnitude harder.
 
-2. Because of the above, I can't make any promises about using this with a anything but Magneto version 1.4.2.0	
+2. Because of the above, I can't make any promises about using this with a anything but Magneto version 1.5.0.1	
 
 3. Standard Caveats about production servers apply.  Use at your own risk, no warranties, etc.
 
